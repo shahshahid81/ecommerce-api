@@ -29,7 +29,8 @@
       "@adonisjs/core",
       "@adonisjs/repl",
       "@japa/preset-adonis/build/adonis-typings",
-      "@adonisjs/lucid"
+      "@adonisjs/lucid",
+      "@adonisjs/auth"
     ],
     "allowUnreachableCode": false,
     "alwaysStrict": true,
@@ -44,7 +45,7 @@
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
     "useUnknownInCatchVariables": true
   }
 }
