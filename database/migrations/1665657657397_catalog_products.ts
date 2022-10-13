@@ -1,10 +1,9 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import CatalogProduct from 'App/Models/CatalogProduct'
 
 export default class extends BaseSchema {
-  protected tableName = 'tbl_catalog_products'
-
   public override async up(): Promise<void> {
-    this.schema.createTable(this.tableName, (table) => {
+    this.schema.createTable(CatalogProduct.table, (table) => {
       table.increments('id').primary()
       table.bigInteger('catalog_id').references('id').inTable('tbl_catalogs').onDelete('CASCADE')
       table.string('name', 50)
@@ -16,6 +15,6 @@ export default class extends BaseSchema {
   }
 
   public override async down(): Promise<void> {
-    this.schema.dropTable(this.tableName)
+    this.schema.dropTable(CatalogProduct.table)
   }
 }

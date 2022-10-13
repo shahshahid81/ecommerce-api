@@ -1,10 +1,9 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import User from 'App/Models/User'
 
 export default class UsersSchema extends BaseSchema {
-  protected tableName = 'tbl_users'
-
   public override async up(): Promise<void> {
-    this.schema.createTable(this.tableName, (table) => {
+    this.schema.createTable(User.table, (table) => {
       table.increments('id').primary()
       table.string('username', 255).notNullable().index()
       table.string('password', 180).notNullable()
@@ -20,6 +19,6 @@ export default class UsersSchema extends BaseSchema {
   }
 
   public override async down(): Promise<void> {
-    this.schema.dropTable(this.tableName)
+    this.schema.dropTable(User.table)
   }
 }

@@ -1,10 +1,9 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import Order from 'App/Models/Order'
 
 export default class extends BaseSchema {
-  protected tableName = 'tbl_orders'
-
   public override async up(): Promise<void> {
-    this.schema.createTable(this.tableName, (table) => {
+    this.schema.createTable(Order.table, (table) => {
       table.increments('id').primary()
       table.bigInteger('seller_id').references('id').inTable('tbl_users').onDelete('CASCADE')
       table.bigInteger('buyer_id').references('id').inTable('tbl_users').onDelete('CASCADE')
@@ -15,6 +14,6 @@ export default class extends BaseSchema {
   }
 
   public override async down(): Promise<void> {
-    this.schema.dropTable(this.tableName)
+    this.schema.dropTable(Order.table)
   }
 }

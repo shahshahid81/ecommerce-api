@@ -1,10 +1,9 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
+import OrderItem from 'App/Models/OrderItem'
 
 export default class extends BaseSchema {
-  protected tableName = 'tbl_order_items'
-
   public override async up(): Promise<void> {
-    this.schema.createTable(this.tableName, (table) => {
+    this.schema.createTable(OrderItem.table, (table) => {
       table.increments('id').primary()
       table.bigInteger('order_id').references('id').inTable('tbl_orders').onDelete('CASCADE')
       table
@@ -19,6 +18,6 @@ export default class extends BaseSchema {
   }
 
   public override async down(): Promise<void> {
-    this.schema.dropTable(this.tableName)
+    this.schema.dropTable(OrderItem.table)
   }
 }
