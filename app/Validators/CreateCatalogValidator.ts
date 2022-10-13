@@ -14,5 +14,19 @@ export default class CreateCatalogValidator {
     ),
   })
 
-  public messages: CustomMessages = {}
+  public messages: CustomMessages = {
+    'name.string': 'Name must be a string',
+    'name.required': 'Name is required',
+    'name.minLength': 'Name must have at least {{ options.minLength }} characters',
+    'name.maxLength': 'Name must have at most {{ options.maxLength }} characters',
+    'products.required': 'Catalog Items are required',
+    'products.*.name.required': 'Catalog Item Name is required',
+    'products.*.name.minLength':
+      'Catalog Item Name must have at least {{ options.minLength }} characters',
+    'products.*.name.maxLength':
+      'Catalog Item Name must have at most {{ options.maxLength }} characters',
+    'products.*.price.required': 'Catalog Item Price is required',
+    'products.*.price.range':
+      'Catalog Item Price must be between {{ options.start }} and {{ options.stop }}',
+  }
 }
