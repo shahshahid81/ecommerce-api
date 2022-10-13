@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon'
 import { BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 import OrderItem from './OrderItem'
@@ -21,10 +20,4 @@ export default class Order extends NumberIdModel {
 
   @hasMany(() => OrderItem)
   public orderItems: HasMany<typeof OrderItem>
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 }

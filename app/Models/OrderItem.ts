@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon'
 import { BelongsTo, belongsTo, column } from '@ioc:Adonis/Lucid/Orm'
 import Order from './Order'
 import CatalogProduct from './CatalogProduct'
@@ -18,10 +17,4 @@ export default class OrderItem extends NumberIdModel {
 
   @belongsTo(() => CatalogProduct)
   public catalogProduct: BelongsTo<typeof CatalogProduct>
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 }

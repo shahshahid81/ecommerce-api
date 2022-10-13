@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon'
 import { column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import CatalogProduct from './CatalogProduct'
 import NumberIdModel from './NumberIdModel'
@@ -14,10 +13,4 @@ export default class Catalog extends NumberIdModel {
 
   @hasMany(() => CatalogProduct)
   public catalogProducts: HasMany<typeof CatalogProduct>
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 }

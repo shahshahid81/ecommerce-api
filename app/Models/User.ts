@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeSave } from '@ioc:Adonis/Lucid/Orm'
 import NumberIdModel from './NumberIdModel'
@@ -22,12 +21,6 @@ export default class User extends NumberIdModel {
 
   @column({ serializeAs: null })
   public rememberMeToken?: string
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 
   @beforeSave()
   public static async hashPassword(User: User) {
