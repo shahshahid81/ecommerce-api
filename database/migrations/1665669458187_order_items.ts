@@ -4,7 +4,7 @@ import OrderItem from 'App/Models/OrderItem'
 export default class extends BaseSchema {
   public override async up(): Promise<void> {
     this.schema.createTable(OrderItem.table, (table) => {
-      table.increments('id').primary()
+      table.bigInteger('id').primary()
       table.bigInteger('order_id').references('id').inTable('tbl_orders').onDelete('CASCADE')
       table
         .bigInteger('catalog_product_id')

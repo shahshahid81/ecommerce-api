@@ -4,7 +4,7 @@ import Catalog from 'App/Models/Catalog'
 export default class extends BaseSchema {
   public override async up(): Promise<void> {
     this.schema.createTable(Catalog.table, (table) => {
-      table.increments('id').primary()
+      table.bigInteger('id').primary()
       table.bigInteger('seller_id').references('id').inTable('tbl_users').onDelete('CASCADE')
       table.string('name', 50)
 

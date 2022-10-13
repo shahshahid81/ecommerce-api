@@ -1,17 +1,15 @@
 import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
-import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
+import { column, beforeSave } from '@ioc:Adonis/Lucid/Orm'
+import NumberIdModel from './NumberIdModel'
 
 export enum UserType {
   BUYER = 'BUYER',
   SELLER = 'SELLER',
 }
 
-export default class User extends BaseModel {
+export default class User extends NumberIdModel {
   public static override table = 'tbl_users'
-
-  @column({ isPrimary: true })
-  public id: number
 
   @column()
   public username: string

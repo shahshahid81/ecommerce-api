@@ -4,7 +4,7 @@ import Order from 'App/Models/Order'
 export default class extends BaseSchema {
   public override async up(): Promise<void> {
     this.schema.createTable(Order.table, (table) => {
-      table.increments('id').primary()
+      table.bigInteger('id').primary()
       table.bigInteger('seller_id').references('id').inTable('tbl_users').onDelete('CASCADE')
       table.bigInteger('buyer_id').references('id').inTable('tbl_users').onDelete('CASCADE')
 

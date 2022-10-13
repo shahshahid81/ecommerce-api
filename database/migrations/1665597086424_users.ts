@@ -4,7 +4,7 @@ import User from 'App/Models/User'
 export default class UsersSchema extends BaseSchema {
   public override async up(): Promise<void> {
     this.schema.createTable(User.table, (table) => {
-      table.increments('id').primary()
+      table.bigInteger('id').primary()
       table.string('username', 255).notNullable().index()
       table.string('password', 180).notNullable()
       table.string('type').notNullable().index()

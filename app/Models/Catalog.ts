@@ -1,12 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
 import CatalogProduct from './CatalogProduct'
+import NumberIdModel from './NumberIdModel'
 
-export default class Catalog extends BaseModel {
+export default class Catalog extends NumberIdModel {
   public static override table = 'tbl_catalogs'
-
-  @column({ isPrimary: true })
-  public id: number
 
   @column()
   public sellerId: number
