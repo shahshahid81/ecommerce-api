@@ -1,8 +1,14 @@
+import Catalog from 'App/Models/Catalog'
 import User from 'App/Models/User'
-import BuyerService from 'App/Services/BuyerService'
+import SellerService from 'App/Services/SellerService'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-export default class AuthController {
+export default class BuyerController {
   public async getListOfSellers(): Promise<User[]> {
-    return BuyerService.getAllSellers()
+    return SellerService.getAllSellers()
+  }
+
+  public async getSellerCatalog({ params }: HttpContextContract): Promise<Catalog> {
+    return SellerService.getSellerCatalog(params.sellerId)
   }
 }
