@@ -1,6 +1,7 @@
 import AlreadyExistsException from 'App/Exceptions/AlreadyExistsException'
 import NotFoundException from 'App/Exceptions/NotFoundException'
 import Catalog from 'App/Models/Catalog'
+import Order from 'App/Models/Order'
 import User, { UserType } from 'App/Models/User'
 
 type CreateCatalog = {
@@ -11,6 +12,10 @@ type CreateCatalog = {
 class SellerService {
   public getAllSellers(): Promise<User[]> {
     return User.query().where({ type: UserType.SELLER })
+  }
+
+  public getAllOrders(sellerId: number): Promise<Order[]> {
+    return Order.query().where({ sellerId })
   }
 
   public async getSellerCatalog(sellerId: number): Promise<Catalog> {
