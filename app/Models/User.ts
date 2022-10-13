@@ -2,12 +2,14 @@ import { DateTime } from 'luxon'
 import Hash from '@ioc:Adonis/Core/Hash'
 import { column, beforeSave, BaseModel } from '@ioc:Adonis/Lucid/Orm'
 
-enum UserTypeEnum {
+export enum UserType {
   BUYER = 'BUYER',
   SELLER = 'SELLER',
 }
 
 export default class User extends BaseModel {
+  public static override table = 'tbl_users'
+
   @column({ isPrimary: true })
   public id: number
 
@@ -18,7 +20,7 @@ export default class User extends BaseModel {
   public password: string
 
   @column()
-  public type: UserTypeEnum
+  public type: UserType
 
   @column()
   public rememberMeToken?: string
